@@ -16,7 +16,7 @@ var singlePost = [{
 ];
 
 
-// configuration _______________________________________________________________________________________ 
+// configuration _______________________________________________________________________________________
 app.configure(function(){
     app.set('port', process.env.PORT || 3000);
     app.use(express.errorHandler());
@@ -35,9 +35,9 @@ app.get("/", function(req, res) {
     res.redirect("/index.html");
 });
 
-// _____________________________________________________________________________________________________ 
+// _____________________________________________________________________________________________________
 
-// mongo db ____________________________________________________________________________________________ 
+// mongo db ____________________________________________________________________________________________
 
 //var db = mongoose.connection;
 //
@@ -72,7 +72,7 @@ app.get("/", function(req, res) {
 //    post_example1.save();
 //    post_example2.save();
 //
-    // _____________________________________________________________________________________________________ 
+    // _____________________________________________________________________________________________________
 
 var contID = singlePost.length;
 
@@ -84,7 +84,7 @@ var contID = singlePost.length;
 //        });
         res.send (singlePost) ;
     });
-        
+
     //get a particular post by ID
     app.get('/api/myPosts/:id', function(req, res){
         selPost = _.find(singlePost, function(itemPost){return itemPost.id == req.params.id});
@@ -97,9 +97,9 @@ var contID = singlePost.length;
 //            });
 
     });
-    
+
     // create a new post
-    app.put('/newPost', function(req, res) { 
+    app.put('/newPost', function(req, res) {
         var newPost = {
             id: ++contID,
             title: req.body.title,
@@ -109,7 +109,7 @@ var contID = singlePost.length;
         singlePost.push(newPost);
         res.json(true);
     });
-    
+
     // update a created post
     app.post('/editPost', function(req, res) {
         selPost = _.find(singlePost, function(itemPost){return itemPost.id == req.body.id});
@@ -124,7 +124,7 @@ var contID = singlePost.length;
 
 //        });
         res.json(true);
-    }); 
+    });
 
     // delete a particular post
     app.delete('/delete/:id', function(req, res) {
@@ -134,11 +134,11 @@ var contID = singlePost.length;
 //        singlePost.remove({ id: req.params.id }, function (err) {
 //            if (err) return handleError(err);
             // removed!
-            res.json(true);   
+            res.json(true);
 //        });
     });
 //});
 
-// _____________________________________________________________________________________________________ 
+// _____________________________________________________________________________________________________
 
 //mongoose.connect('mongodb://localhost/test');

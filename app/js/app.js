@@ -51,6 +51,8 @@ app.run(function ($rootScope) {
             title: 'Post 2',
             text:  'Texto del Post 2.'
         }];
+
+    $rootScope.cont = $rootScope.data.length;
 });
 
 

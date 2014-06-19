@@ -13,8 +13,8 @@ app.controller('myPostsCtrl', function($scope, blogService, toaster, $rootScope)
             text:  'Texto del Post 2.'
         }
     ];
-debugger;
-    var cont = singlePost.length;
+
+//    var cont = singlePost.length;
 
 //    $rootScope.data = singlePost;
 

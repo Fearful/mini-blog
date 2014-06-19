@@ -5,12 +5,15 @@ app.controller('newPostCtrl', function($scope, blogService, $location, toaster, 
 
 
     $scope.addPost = function() {
-    debugger;
-        $rootScope.data.push({
-            id : '',
+   
+        var postData = {
+             id : ++$rootScope.cont,
             title : $scope.titlePost,
             text : $scope.bodyPost
-        });
+        };
+
+        $rootScope.data.push(postData);
+
         $location.path("/posts");
 
 //        var postData = {

@@ -14,7 +14,7 @@ app.controller('postDetailsCtrl', function($scope, $routeParams, blogService, $l
     $scope.removePost = function () {
         blogService.remove($scope.current.id)
             .success(function (current, status, headers, config) {
-                $location.path("/posts/");    
+                $location.path("/posts/");
                 toaster.pop('success', "Post removed successfully!");
             })
             .error(function(current, status, headers, config) {

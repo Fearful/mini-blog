@@ -1,29 +1,13 @@
-app.controller('editPostCtrl', function($scope, $routeParams, blogService, $location, toaster) {
+app.controller('editPostCtrl', function($scope,$rootScope, $routeParams, $location) {
     //get the element by id
 
-    cosole.log("hello from editPostCtrl");
+    $scope.current = _.find( $rootScope.data, function(itemPost){return itemPost.id == $routeParams.postId});
 
-    var post = _.find( $rootScope.data, function(itemPost){return itemPost.id == $routeParams.id});
+    $scope.updatePost = function() {
 
-   $scope.current =  post;
-//    res.send(selPost);
-//       blogService.getById($routeParams.postId)
-//        .success(function (current, status, headers, config) {
-//            $scope.current = current;
-//         })
-//        .error(function(current, status, headers, config) {
-//            toaster.pop('error', current);
-//         });
+        //still same reference not need to update
 
-    // update post information. Call to blogService.update()
-//    $scope.updatePost = function() {
-//        blogService.update($scope.current.id, $scope.current)
-//            .success(function (current, status, headers, config) {
-//                $location.path("/posts/"+$scope.current.id);
-//                toaster.pop('success', "Post updated successfully!");
-//             })
-//            .error(function(current, status, headers, config) {
-//                toaster.pop('error', current);
-//             });
-//    };
+        $location.path("/posts");
+
+    };
 });

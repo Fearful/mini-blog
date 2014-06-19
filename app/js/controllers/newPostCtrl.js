@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('newPostCtrl', function($scope, blogService, $location, toaster, $rootScope) {
+app.controller('newPostCtrl', function($scope, $rootScope) {
     // Call to blogService.create()
 
 
@@ -16,17 +16,5 @@ app.controller('newPostCtrl', function($scope, blogService, $location, toaster, 
 
         $location.path("/posts");
 
-//        var postData = {
-//
-//        };
-//        blogService.create(postData)
-//            .success(function (current, status, headers, config) {
-//                debugger;
-//                $location.path("/posts");
-//                toaster.pop('success', "Post saved successfully!");
-//            })
-//            .error(function(current, status, headers, config) {
-//                toaster.pop('error', current);
-//            });
     };
 });

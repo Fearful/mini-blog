@@ -1,24 +1,15 @@
 'use strict';
 
-app.controller('postDetailsCtrl', function($scope, $routeParams, blogService, $location, toaster) {
+app.controller('postDetailsCtrl', function($scope,$rootScope, $routeParams,$location) {
     //Call to getById() method in blogService
-    blogService.getById($routeParams.postId)
-        .success(function (current, status, headers, config) {
-            $scope.current = current;
-        })
-        .error(function(current, status, headers, config) {
-            toaster.pop('error', current);
-         });
+
+    $scope.current = _.find( $rootScope.data, function(itemPost){return itemPost.id == $routeParams.postId});
 
     // removePost function
     $scope.removePost = function () {
-        blogService.remove($scope.current.id)
-            .success(function (current, status, headers, config) {
-                $location.path("/posts/");
-                toaster.pop('success', "Post removed successfully!");
-            })
-            .error(function(current, status, headers, config) {
-                toaster.pop('error', current);
-            });
+
+       //todo remove $scope.current from $rootScope.data,
+
+        $location.path("/posts");
     }
 });

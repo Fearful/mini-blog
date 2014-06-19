@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('newPostCtrl', function($scope, $rootScope) {
+app.controller('newPostCtrl', function($scope, $rootScope, $location) {
     // Call to blogService.create()
 
 

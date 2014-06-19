@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 var app = angular.module('myApp', [ 'ngRoute', 'toaster' ]);
 
+
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider    
         .when('/', 
@@ -11,7 +12,7 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'myPostsCtrl',
             templateUrl: 'partials/myPosts.html' 
             })
-        .when('/posts', 
+        .when('/posts',
             {
             controller: 'myPostsCtrl',
             templateUrl: 'partials/myPosts.html' 
@@ -36,7 +37,21 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'partials/editPost.html'
             })    
         .otherwise({redirectTo: '/'});
+
 }]);
+
+app.run(function ($rootScope) {
+    $rootScope.data = [{
+        id: 1,
+        title: 'Post 1',
+        text:  'Texto del Post 1.'
+    },
+        {
+            id: 2,
+            title: 'Post 2',
+            text:  'Texto del Post 2.'
+        }];
+});
 
 
 

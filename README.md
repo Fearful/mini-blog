@@ -1,2 +1,2 @@
-mini-blog
-=========
+mini-blog-node
+==============

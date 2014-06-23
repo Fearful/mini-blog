@@ -41,7 +41,7 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.run(function ($rootScope) {
-    $rootScope.data = [{
+    $rootScope.posts = [{
         id: 1,
         title: 'Post 1',
         text:  'Texto del Post 1.'
@@ -52,7 +52,7 @@ app.run(function ($rootScope) {
             text:  'Texto del Post 2.'
         }];
 
-    $rootScope.cont = $rootScope.data.length;
+    $rootScope.cont = $rootScope.posts.length;
 });
 
 

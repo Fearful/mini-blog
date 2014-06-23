@@ -12,7 +12,7 @@ app.controller('newPostCtrl', function($scope, $rootScope, $location) {
             text : $scope.bodyPost
         };
 
-        $rootScope.data.push(postData);
+        $rootScope.posts.push(postData);
 
         $location.path("/posts");
 

@@ -55,5 +55,3 @@ app.run(function ($rootScope) {
     $rootScope.cont = $rootScope.posts.length;
 });
 
-
-

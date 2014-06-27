@@ -18,3 +18,4 @@ app.controller('postDetailsCtrl', function($scope,$rootScope, $routeParams,$loca
   $location.path("/posts");
     }
 });
+

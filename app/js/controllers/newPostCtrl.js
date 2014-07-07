@@ -3,9 +3,7 @@
 app.controller('newPostCtrl', function($scope, $rootScope, $location) {
     // Call to blogService.create()
 
-
-    $scope.addPost = function() {
-   
+    $scope.addPost = function() {   
         var postData = {
              id : ++$rootScope.cont,
             title : $scope.titlePost,
@@ -13,8 +11,6 @@ app.controller('newPostCtrl', function($scope, $rootScope, $location) {
         };
 
         $rootScope.posts.push(postData);
-
         $location.path("/posts");
-
     };
 });

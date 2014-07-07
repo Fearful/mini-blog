@@ -1,6 +1,5 @@
 app.controller('editPostCtrl', function($scope,$rootScope, $routeParams, $location) {
     //get the element by id
-
     $scope.current = _.find( $rootScope.posts, function(itemPost){return itemPost.id == $routeParams.postId});
 
     $scope.oldTiltle = $scope.current.title;
@@ -9,7 +8,6 @@ app.controller('editPostCtrl', function($scope,$rootScope, $routeParams, $locati
     $scope.updatePost = function() {
         //still same reference not need to update
         $location.path("/posts");
-
     };
 
     $scope.oldPost = function(){

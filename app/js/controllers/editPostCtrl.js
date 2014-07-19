@@ -7,6 +7,9 @@ app.controller('editPostCtrl', function($scope,$rootScope, $routeParams, $locati
 
     $scope.updatePost = function() {
         //still same reference not need to update
+        if($rootScope.storage){
+            localStorage.setItem('mini-blog-posts', angular.toJson($rootScope.posts));
+        }
         $location.path("/posts");
     };
 

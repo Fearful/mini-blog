@@ -12,5 +12,8 @@ app.controller('newPostCtrl', function($scope, $rootScope, $location) {
 
         $rootScope.posts.push(postData);
         $location.path("/posts");
+        if($rootScope.storage){
+            localStorage.setItem('mini-blog-posts', angular.toJson($rootScope.posts));
+        }
     };
 });

@@ -39,17 +39,23 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.run(function ($rootScope) {
-    $rootScope.posts = [{
-        id: 1,
-        title: 'Post 1',
-        text:  'Text Post 1.'
-    },
-        {
-            id: 2,
-            title: 'Post 2',
-            text:  'Text Post 2.'
-        }];
-
+    $rootScope.posts = [];
+    if(supportsStorage()){
+        var savedPosts = JSON.parse(localStorage.getItem('mini-blog-posts'));
+        if(savedPosts && savedPosts.length > 0){
+            $rootScope.posts = $rootScope.posts.concat(savedPosts);
+        }
+        $rootScope.storage = true;
+    } else {
+        $rootScope.storage = false;
+    }
     $rootScope.cont = $rootScope.posts.length;
 });
 
+function supportsStorage() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+}

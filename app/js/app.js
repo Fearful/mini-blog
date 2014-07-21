@@ -40,10 +40,8 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.run(function ($rootScope, localStorageService) {
     $rootScope.posts = [];
-    if(localStorageService.isSupported){
-        localStorageService.setPrefix('ms');
-        var savedPosts = localStorageService.get('posts');
-        $rootScope.posts = savedPosts ? savedPosts : [];
-    }
+    localStorageService.setPrefix('ms');
+    var savedPosts = localStorageService.get('posts');
+    $rootScope.posts = savedPosts ? savedPosts : [];
     $rootScope.cont = $rootScope.posts.length;
 });

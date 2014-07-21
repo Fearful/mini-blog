@@ -45,6 +45,9 @@ myLocalStorage.provider('localStorageService', function() {
       }
     }());
     var addToLocalStorage = function (key, value) {
+      if(!browserSupportsLocalStorage){
+        return;
+      }
       if (typeof value === "undefined") {
         value = null;
       }
@@ -63,6 +66,9 @@ myLocalStorage.provider('localStorageService', function() {
       return true;
     };
     var getFromLocalStorage = function (key) {
+      if(!browserSupportsLocalStorage){
+        return;
+      }
       var item = webStorage ? webStorage.getItem(deriveKey(key)) : null;
       if (!item || item === 'null') {
         return null;
@@ -73,6 +79,9 @@ myLocalStorage.provider('localStorageService', function() {
       return item;
     };
     var removeFromLocalStorage = function (key) {
+      if(!browserSupportsLocalStorage){
+        return;
+      }
       try {
         webStorage.removeItem(deriveKey(key));
         if (notify.removeItem) {
@@ -85,6 +94,9 @@ myLocalStorage.provider('localStorageService', function() {
       return true;
     };
     var getKeysForLocalStorage = function () {
+      if(!browserSupportsLocalStorage){
+        return;
+      }
       var prefixLength = prefix.length;
       var keys = [];
       for (var key in webStorage) {

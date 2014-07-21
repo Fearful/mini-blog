@@ -12,8 +12,6 @@ app.controller('newPostCtrl', function($scope, $rootScope, $location, localStora
 
         $rootScope.posts.push(postData);
         $location.path("/posts");
-        if(localStorageService.isSupported){
-            localStorageService.set('posts', $rootScope.posts);
-        }
+        localStorageService.set('posts', $rootScope.posts);
     };
 });

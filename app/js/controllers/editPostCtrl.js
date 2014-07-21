@@ -6,9 +6,7 @@ app.controller('editPostCtrl', function($scope, $rootScope, $routeParams, $locat
     $scope.oldText = $scope.current.text;
     $scope.updatePost = function() {
         //still same reference not need to update
-        if(localStorageService.isSupported){
-            localStorageService.set('posts', $rootScope.posts);
-        }
+        localStorageService.set('posts', $rootScope.posts);
         $location.path("/posts");
     };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('newPostCtrl', function($scope, $rootScope, $location) {
+app.controller('newPostCtrl', function($scope, $rootScope, $location, localStorageService) {
     // Call to blogService.create()
 
     $scope.addPost = function() {   
@@ -12,8 +12,8 @@ app.controller('newPostCtrl', function($scope, $rootScope, $location) {
 
         $rootScope.posts.push(postData);
         $location.path("/posts");
-        if($rootScope.storage){
-            localStorage.setItem('mini-blog-posts', angular.toJson($rootScope.posts));
+        if(localStorageService.isSupported){
+            localStorageService.set('posts', $rootScope.posts);
         }
     };
 });

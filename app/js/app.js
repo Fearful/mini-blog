@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-var app = angular.module('myApp', [ 'ngRoute', 'toaster' ]);
+var app = angular.module('myApp', [ 'ngRoute', 'toaster', 'msLocalStorage' ]);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider    
@@ -38,24 +38,12 @@ app.config(['$routeProvider', function($routeProvider) {
 
 }]);
 
-app.run(function ($rootScope) {
+app.run(function ($rootScope, localStorageService) {
     $rootScope.posts = [];
-    if(supportsStorage()){
-        var savedPosts = JSON.parse(localStorage.getItem('mini-blog-posts'));
-        if(savedPosts && savedPosts.length > 0){
-            $rootScope.posts = $rootScope.posts.concat(savedPosts);
-        }
-        $rootScope.storage = true;
-    } else {
-        $rootScope.storage = false;
+    if(localStorageService.isSupported){
+        localStorageService.setPrefix('ms');
+        var savedPosts = localStorageService.get('posts');
+        $rootScope.posts = savedPosts ? savedPosts : [];
     }
     $rootScope.cont = $rootScope.posts.length;
 });
-
-function supportsStorage() {
-  try {
-    return 'localStorage' in window && window['localStorage'] !== null;
-  } catch (e) {
-    return false;
-  }
-}

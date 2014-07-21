@@ -4,7 +4,23 @@
   "repository": "https://github.com/juanasas/angular-mini-blog",
   "devDependencies": {
     "express": "~3.2.6",
-    "underscore":"*"
+    "underscore":"*",
+    "karma": "~0.10",
+    "protractor": "~0.20.1",
+    "http-server": "^0.6.1",
+    "shelljs": "^0.2.6",
+    "karma-junit-reporter": "^0.2.2"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node web-server.js",
 
+    "pretest": "npm install",
+    "test": "karma start test/karma.conf.js",
+    "test-single-run": "karma start test/karma.conf.js  --single-run",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor test/protractor-conf.js"
   }
 }
